@@ -10,6 +10,7 @@
 		<jta-data-source>java:/eCommerce</jta-data-source>
 
 		<!-- liste des classes pesistantes -->
+		<class>fr.adaming.model.Agent</class>
 		<class>fr.adaming.model.Categorie</class>
 		<class>fr.adaming.model.Client</class>
 		<class>fr.adaming.model.Commande</class>
