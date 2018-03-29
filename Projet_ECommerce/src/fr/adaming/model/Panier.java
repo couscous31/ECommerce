@@ -8,7 +8,6 @@ import javax.persistence.OneToMany;
 public class Panier implements Serializable{
 	
 	//Transfo assos Uml et Java avec ligne de commande
-	@OneToMany
 	private List<LigneCommande> listeLignecommande;
 
 	//Getter et setter
