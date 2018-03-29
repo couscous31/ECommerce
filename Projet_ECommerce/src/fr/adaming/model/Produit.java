@@ -111,6 +111,18 @@ public class Produit implements Serializable{
 	public void setPhotoProd(byte[] photoProd) {
 		this.photoProd = photoProd;
 	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	public List<LigneCommande> getListeLignecommande() {
+		return listeLignecommande;
+	}
+	public void setListeLignecommande(List<LigneCommande> listeLignecommande) {
+		this.listeLignecommande = listeLignecommande;
+	}
 	
 	
 
