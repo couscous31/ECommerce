@@ -13,43 +13,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="commandes")
-public class Commande  implements Serializable{
-	
-	//Declaration des attributs
+@Table(name = "commandes")
+public class Commande implements Serializable {
+
+	// Declaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_com")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_com")
 	private long idCommande;
+	@Temporal(TemporalType.DATE)
 	private Date dateCommande;
-	
-	//association uml java :
+
+	// association uml java :
 	@ManyToOne
-	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
+	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	private Client client;
-	
-	@OneToMany
+
+	@OneToMany(mappedBy = "commandes")
 	private List<LigneCommande> listelc;
-	
-	public Client getClient() {
-		return client;
-	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public List<LigneCommande> getListelc() {
-		return listelc;
-	}
-
-	public void setListelc(List<LigneCommande> listelc) {
-		this.listelc = listelc;
-	}
-
-	//Constructeurs
+	// Constructeurs
 	public Commande() {
 		super();
 	}
@@ -80,11 +67,22 @@ public class Commande  implements Serializable{
 	public void setDateCommande(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
-	
-	
-	
-	
-	
-	
+
+	// G+S
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public List<LigneCommande> getListelc() {
+		return listelc;
+	}
+
+	public void setListelc(List<LigneCommande> listelc) {
+		this.listelc = listelc;
+	}
 
 }
