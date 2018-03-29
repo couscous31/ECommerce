@@ -18,5 +18,7 @@ public interface ICategorieDao {
 	public int modifierCategorie (Categorie cat);
 	
 	public int supprimerCategorie (Categorie cat);
+	
+	public  Categorie getCategorieById(Categorie cat);
 
 }

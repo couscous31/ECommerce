@@ -79,4 +79,22 @@ public class CategorieDao implements ICategorieDao {
 		return verif;
 	}
 
+	@Override
+	public Categorie getCategorieById(Categorie cat) {
+		// ppassage de la requete :
+		String req="select cat from Categorie as cat where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg";
+		
+		//creation d'un query :
+		Query query = em.createQuery(req);
+		
+		//passage des parametres :
+		query.setParameter("pIdCat", cat.getIdCategorie());
+		query.setParameter("pIdAg", cat.getAgent().getId());
+		
+		
+		
+		
+		return (Categorie) query.getSingleResult();
+	}
+
 }

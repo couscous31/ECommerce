@@ -18,6 +18,9 @@ public interface ICategorieService {
 	public int modifierCategorieService (Categorie cat, Agent a);
 
 	public int supprimerCategorie (Categorie cat, Agent a);
+	
+	public  Categorie getCategorieByIdService(Categorie cat, Agent a);
+
 
 
 

@@ -41,4 +41,12 @@ public class CategorieServiceImpl implements ICategorieService {
 		return categorieDao.supprimerCategorie(cat);
 	}
 
+	@Override
+	public Categorie getCategorieByIdService(Categorie cat, Agent a) {
+		 
+		 cat.setAgent(a);
+		
+		return categorieDao.getCategorieById(cat);
+	}
+
 }
