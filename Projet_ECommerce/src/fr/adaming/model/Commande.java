@@ -33,7 +33,7 @@ public class Commande implements Serializable {
 	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	private Client client;
 
-	@OneToMany(mappedBy = "commandes")
+	@OneToMany(mappedBy = "commande")
 	private List<LigneCommande> listelc;
 
 	// Constructeurs
