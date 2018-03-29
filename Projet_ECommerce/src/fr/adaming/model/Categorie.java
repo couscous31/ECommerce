@@ -1,12 +1,14 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,11 +18,15 @@ public class Categorie implements Serializable {
 	// Declaration des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_cat")
+	@Column(name = "id_cat")
 	private long idCategorie;
 	private String nomCategorie;
 	private byte photoCat;
 	private String description;
+
+	@ManyToOne
+	// Transformation UML en java
+	 private List<Produit> listeCategorie; 
 
 	// Constructeurs
 	public Categorie() {
