@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,12 @@ public class Agent implements Serializable{
 	private int id;
 	private String mail;
 	private String mdp;
+	
+	//Transformation uml en java
+	private List<Produit> listeProduit;
+	private List<Categorie> listeCetegorie;
+	private List<Commande> listeCommande;
+	
 	
 	//Constructeurs
 	public Agent() {
@@ -55,6 +62,24 @@ public class Agent implements Serializable{
 	}
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+	public List<Categorie> getListeCetegorie() {
+		return listeCetegorie;
+	}
+	public void setListeCetegorie(List<Categorie> listeCetegorie) {
+		this.listeCetegorie = listeCetegorie;
+	}
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
+	}
+	public List<Commande> getListeCommande() {
+		return listeCommande;
+	}
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
 	}
 	
 	
