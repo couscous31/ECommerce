@@ -27,21 +27,16 @@ public class Categorie implements Serializable {
 	private String description;
 
 	
-	// Transformation UML en java
+	// Transformation UML en java avec ligne de commande
 	@OneToMany(mappedBy="categorie")
 	private List<Produit> listeProduit;
 	
+	//Transfo assos Uml en Java avec agent
 	@ManyToOne
 	@JoinColumn(name="a_id",referencedColumnName="id_a")
 	private Agent agent;
 
-	public Agent getAgent() {
-		return agent;
-	}
-
-	public void setAgent(Agent agent) {
-		this.agent = agent;
-	}
+	
 
 	// Constructeurs
 	public Categorie() {
@@ -102,6 +97,13 @@ public class Categorie implements Serializable {
 
 	public void setListeProduit(List<Produit> listeProduit) {
 		this.listeProduit = listeProduit;
+	}
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 
 	// Methode ToString
