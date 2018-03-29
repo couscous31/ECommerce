@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,9 +26,23 @@ public class Categorie implements Serializable {
 	private byte[] photoCat;
 	private String description;
 
+	
+	
 	@OneToMany
 	// Transformation UML en java
 	private List<Produit> listeProduit;
+	
+	@ManyToOne
+	@JoinColumn(name="a_id",referencedColumnName="id_a")
+	private Agent agent;
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
 
 	// Constructeurs
 	public Categorie() {
