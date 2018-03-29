@@ -21,7 +21,7 @@ public class Categorie implements Serializable {
 	@Column(name = "id_cat")
 	private long idCategorie;
 	private String nomCategorie;
-	private byte photoCat;
+	private byte[] photoCat;
 	private String description;
 
 	@ManyToOne
@@ -33,14 +33,14 @@ public class Categorie implements Serializable {
 		super();
 	}
 
-	public Categorie(String nomCategorie, byte photoCat, String description) {
+	public Categorie(String nomCategorie, byte[] photoCat, String description) {
 		super();
 		this.nomCategorie = nomCategorie;
 		this.photoCat = photoCat;
 		this.description = description;
 	}
 
-	public Categorie(long idCategorie, String nomCategorie, byte photoCat, String description) {
+	public Categorie(long idCategorie, String nomCategorie, byte[] photoCat, String description) {
 		super();
 		this.idCategorie = idCategorie;
 		this.nomCategorie = nomCategorie;
@@ -65,11 +65,11 @@ public class Categorie implements Serializable {
 		this.nomCategorie = nomCategorie;
 	}
 
-	public byte getPhotoCat() {
+	public byte[] getPhotoCat() {
 		return photoCat;
 	}
 
-	public void setPhotoCat(byte photoCat) {
+	public void setPhotoCat(byte[] photoCat) {
 		this.photoCat = photoCat;
 	}
 
