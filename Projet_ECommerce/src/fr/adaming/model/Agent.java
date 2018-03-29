@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +25,11 @@ public class Agent implements Serializable{
 	private String mdp;
 	
 	//Transformation uml en java
+	@OneToMany(mappedBy="agent")
 	private List<Produit> listeProduit;
+	@OneToMany(mappedBy="agent")
 	private List<Categorie> listeCetegorie;
+	@OneToMany(mappedBy="agent")
 	private List<Commande> listeCommande;
 	
 	
