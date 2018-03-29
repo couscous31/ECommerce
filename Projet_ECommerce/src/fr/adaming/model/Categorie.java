@@ -27,9 +27,7 @@ public class Categorie implements Serializable {
 
 	@OneToMany
 	// Transformation UML en java
-	 private List<Produit> listeProduit; 
-
-	
+	private List<Produit> listeProduit;
 
 	// Constructeurs
 	public Categorie() {
@@ -83,6 +81,7 @@ public class Categorie implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public List<Produit> getListeProduit() {
 		return listeProduit;
 	}
