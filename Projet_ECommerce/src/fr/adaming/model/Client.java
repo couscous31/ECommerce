@@ -85,6 +85,13 @@ public class Client  implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	public List<Commande> getListeCommande() {
+		return listeCommande;
+	}
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
+	}
+	
 	
 	
 	
