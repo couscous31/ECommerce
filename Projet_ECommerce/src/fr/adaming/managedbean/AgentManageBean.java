@@ -4,18 +4,23 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import fr.adaming.model.Agent;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IAgentService;
 
+@ManagedBean(name="aMB")
+@RequestScoped
 public class AgentManageBean implements Serializable {
 
+	@EJB
 	// Transformation UML en java
 	IAgentService agentService;
 
-	@EJB // Declarer l'agent comme attribut d'un managebean
+	 // Declarer l'agent comme attribut d'un managebean
 	private Agent agent;
 
 	// Constructeur
