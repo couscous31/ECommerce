@@ -9,15 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="produits")
+//@Entity
+//@Table(name="produits")
 
 public class Produit implements Serializable{
 	
 	//Attributs
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_p")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="id_p")
 	private long id;
 	private String designation;
 	private String description;
