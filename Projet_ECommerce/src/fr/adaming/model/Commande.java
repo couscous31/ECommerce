@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,9 @@ public class Commande  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
 	private Client client;
+	
+	@ManyToOne
+	private List<LigneCommande> listelc;
 	
 	//Constructeurs
 	public Commande() {
