@@ -28,13 +28,19 @@ public class Commande implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateCommande;
 
-	// association uml java :
+	// association uml java avec client:
 	@ManyToOne
 	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	private Client client;
 
+	// association uml java avec ligne commande
 	@OneToMany(mappedBy = "commande")
 	private List<LigneCommande> listelc;
+	
+	//association uml java avec agent
+	@ManyToOne
+	@JoinColumn(name="a_id", referencedColumnName="id_a")
+	private Agent agent;
 
 	// Constructeurs
 	public Commande() {
@@ -52,6 +58,7 @@ public class Commande implements Serializable {
 		this.dateCommande = dateCommande;
 	}
 
+	// G+S
 	public long getIdCommande() {
 		return idCommande;
 	}
@@ -68,7 +75,7 @@ public class Commande implements Serializable {
 		this.dateCommande = dateCommande;
 	}
 
-	// G+S
+	
 	public Client getClient() {
 		return client;
 	}
@@ -85,4 +92,13 @@ public class Commande implements Serializable {
 		this.listelc = listelc;
 	}
 
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	
 }
