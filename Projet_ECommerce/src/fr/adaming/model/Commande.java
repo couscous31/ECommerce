@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,11 @@ public class Commande  implements Serializable{
 	@Column(name="id_com")
 	private long idCommande;
 	private Date dateCommande;
+	
+	//association uml java :
+	@ManyToOne
+	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
+	private Client client;
 	
 	//Constructeurs
 	public Commande() {
