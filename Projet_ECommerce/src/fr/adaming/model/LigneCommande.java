@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -22,6 +24,19 @@ public class LigneCommande implements Serializable {
 	private int id;
 	private int quantite;
 	private int  prix ;
+	
+	
+	//association uml java avec produit :
+	@ManyToOne
+	@JoinColumn(name="p_id", referencedColumnName="id_p")
+	private Produit produit;
+	
+	//association uml java avec la commande :
+	@ManyToOne
+	@JoinColumn(name="com_id",referencedColumnName="id_com")
+	private Commande commande;
+	
+	
 	
 	
 	//constructeur
