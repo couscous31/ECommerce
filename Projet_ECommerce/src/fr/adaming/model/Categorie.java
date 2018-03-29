@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +25,11 @@ public class Categorie implements Serializable {
 	private byte[] photoCat;
 	private String description;
 
-	@ManyToOne
+	@OneToMany
 	// Transformation UML en java
-	 private List<Produit> listeCategorie; 
+	 private List<Produit> listeProduit; 
+
+	
 
 	// Constructeurs
 	public Categorie() {
@@ -79,6 +82,13 @@ public class Categorie implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
 	}
 
 	// Methode ToString
