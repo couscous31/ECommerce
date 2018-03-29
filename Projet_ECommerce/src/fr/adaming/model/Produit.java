@@ -1,16 +1,22 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="produits")
+
 public class Produit implements Serializable{
 	
 	//Attributs
@@ -25,6 +31,17 @@ public class Produit implements Serializable{
 	private boolean selectionne;
 	private byte[] photoProd;
 	
+	//Transfo de l'assos Uml en Java avec Categorie
+	@ManyToOne
+	@JoinColumn(name="cat_id", referencedColumnName="id_cat")
+	private Categorie categorie;
+	
+	//Transfo de l'assos Uml en Java avec Commande
+	@ManyToMany
+	@JoinTable(name="prod_com_jointure",
+						JoinColumns=@JoinColumn(name="p_id", referencedColumnName="id_p"),
+						inverseJoinColumns=@JoinColumn(name="com_id", referencedColumnName="id_com"))
+	private List<Commande> listeCommande;
 
 	
 	//Constructeurs
