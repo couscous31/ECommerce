@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,9 +30,25 @@ public class Commande  implements Serializable{
 	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
 	private Client client;
 	
-	@ManyToOne
+	@OneToMany
 	private List<LigneCommande> listelc;
 	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public List<LigneCommande> getListelc() {
+		return listelc;
+	}
+
+	public void setListelc(List<LigneCommande> listelc) {
+		this.listelc = listelc;
+	}
+
 	//Constructeurs
 	public Commande() {
 		super();
