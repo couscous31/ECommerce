@@ -13,7 +13,7 @@ import fr.adaming.model.Agent;
 public class AgentDaoImpl implements IAgentDao {
 
 	//Pour injecter l'entité manager de em
-	@PersistenceContext(unitName="PU") 
+	@PersistenceContext(unitName="pu") 
 	private EntityManager em;
 	
 	@Override
