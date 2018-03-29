@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,14 +37,11 @@ public class Produit implements Serializable{
 	@JoinColumn(name="cat_id", referencedColumnName="id_cat")
 	private Categorie categorie;
 	
-	//Transfo de l'assos Uml en Java avec Commande
-	@ManyToMany
-	@JoinTable(name="prod_com_jointure",
-						JoinColumns=@JoinColumn(name="p_id", referencedColumnName="id_p"),
-						inverseJoinColumns=@JoinColumn(name="com_id", referencedColumnName="id_com"))
-	private List<Commande> listeCommande;
-
+	//Transfo de l'assos Uml en Java avec Ligne Commande
+	@OneToMany(mappedBy="produit")
+	private List<LigneCommande> listeLignecommande;
 	
+
 	//Constructeurs
 	public Produit() {
 		super();
