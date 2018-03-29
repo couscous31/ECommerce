@@ -27,9 +27,8 @@ public class Categorie implements Serializable {
 	private String description;
 
 	
-	
-	@OneToMany
 	// Transformation UML en java
+	@OneToMany(mappedBy="categorie")
 	private List<Produit> listeProduit;
 	
 	@ManyToOne
