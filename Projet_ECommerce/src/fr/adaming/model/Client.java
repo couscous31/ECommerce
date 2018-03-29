@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,7 +29,8 @@ public class Client  implements Serializable{
 	
 	
 	//transformation association UML en Java :
-	//private List<Commande> commande;
+	@OneToMany(mappedBy="client")
+	private List<Commande> listeCommande;
 	
 	
 	//constructeurs :
