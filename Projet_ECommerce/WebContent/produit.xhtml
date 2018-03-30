@@ -13,55 +13,23 @@
 <h:body>
 
 
-<ui:composition template="/template/layoutAgent.xhtml">
+<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corps">
 	
-	<h:form>
-    <p:growl>
-        <p:autoUpdate />
-    </p:growl>
- 
-    <p:panelMenu style="width:300px">
-        <p:submenu label="Ajax Menuitems">
-            <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
-            <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
-        </p:submenu>
-        <p:submenu label="Non-Ajax Menuitem">
-            <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
-        </p:submenu>
-        <p:separator />
-        <p:submenu label="Navigations" >
-            <p:submenu label="Links" icon="ui-icon-extlink">
-                <p:submenu label="PrimeFaces" icon="ui-icon-heart">
-                    <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
-                    <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
-                    <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
-                    <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
-                </p:submenu>
-            </p:submenu>
-            <p:menuitem value="Mobile" outcome="/mobile/index" icon="ui-icon-signal" />
-        </p:submenu>
-    </p:panelMenu>
-</h:form>
-
-
-
 
 <h:form id="form">
-    <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
-        rows="12" paginator="true" id="cars"
+    <p:dataGrid var="car" value="#{prMB.produit}" columns="4" layout="grid"
+        rows="12" paginator="true" id="pr"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
         rowsPerPageTemplate="6,12,16">
  
-        <f:facet name="header">
-            Cars for Sale
-        </f:facet>
+        <f:facet name="header">Toutes les chaussures</f:facet>
  
-        <p:panel header="#{car.id}" style="text-align:center">
+        <p:panel header="#{pr.designation}" style="text-align:center">
             <h:panelGrid columns="1" style="width:100%">
                 <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
  
-                <h:outputText value="#{car.year}" />
+                <h:outputText value="#{pr.prix} €" />
  
                 <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
                     <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
