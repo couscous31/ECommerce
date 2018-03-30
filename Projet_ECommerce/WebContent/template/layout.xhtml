@@ -11,7 +11,19 @@
 </h:head>
 
 <h:body>
+<!-- Inclure le header -->
+	<div style="text-align: center; padding: 20px;">
+		<ui:insert name="header">
+			<ui:include src="/template/header.xhtml" />
+		</ui:insert>
+	</div>
 
+	<!-- Inclure le corps -->
+	<div>
+		<ui:insert name="corps">
+			<ui:include src="/template/corps.xhtml" />
+		</ui:insert>
+	</div>
 
 	
 </h:body>
