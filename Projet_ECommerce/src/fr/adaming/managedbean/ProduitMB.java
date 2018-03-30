@@ -178,5 +178,7 @@ public class ProduitMB implements Serializable {
 		maSession.setAttribute("produitsListe", liste);
 
 	}
+	
+
 
 }
