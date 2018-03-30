@@ -16,8 +16,7 @@ import fr.adaming.service.IAgentService;
 @RequestScoped
 public class AgentManageBean implements Serializable {
 
-	@EJB
-	// Transformation UML en java
+	@EJB// Transformation UML en java
 	IAgentService agentService;
 
 	 // Declarer l'agent comme attribut d'un managebean

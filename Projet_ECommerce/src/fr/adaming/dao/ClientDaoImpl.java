@@ -22,7 +22,7 @@ public class ClientDaoImpl implements IClientDao {
 
 		Query query = em.createQuery(req);
 
-		return (List<Client>) query.getSingleResult();
+		return (List<Client>) query.getResultList();
 	}
 
 }

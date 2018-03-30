@@ -9,6 +9,22 @@
 </h:head>
 <h:body>
 
+<h:form>
+
+<h:form>
+		<h:panelGrid columns="2">
+	Mail:<h:inputText value="#{aMB.agent.mail}"></h:inputText>
+	Password : <h:inputText value="#{aMB.agent.mdp}"></h:inputText>
+
+			<h:commandButton value="Connectez vous" action="#{aMB.seConnecter}"></h:commandButton>
+
+		</h:panelGrid>
+	</h:form>
+
+
+
+
+</h:form>
 
 </h:body>
 </html>
