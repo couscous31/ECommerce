@@ -13,6 +13,10 @@ public interface IClientDao {
 	
 	public Client addClient(Client cl);
 	
+	public int update(Client cl);
+	
+	public int delete(Client cl);
+	
 	
 
 }
