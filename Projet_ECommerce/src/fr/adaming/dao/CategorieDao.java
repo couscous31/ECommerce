@@ -81,10 +81,11 @@ public class CategorieDao implements ICategorieDao {
 
 	@Override
 	public Categorie getCategorieById(Categorie cat) {
-		// ppassage de la requete :
-		String req="select cat from Categorie as cat where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg";
+
+		//appel de la requete :
+		String req = "select cat from Categorie where cat.idCategorie=:pId and cat.agent.id=:pIdAg";
 		
-		//creation d'un query :
+		//creation du query :
 		Query query = em.createQuery(req);
 		
 		//passage des parametres :
@@ -92,9 +93,8 @@ public class CategorieDao implements ICategorieDao {
 		query.setParameter("pIdAg", cat.getAgent().getId());
 		
 		
+		return (Categorie) query.getSingleResult() ;
 		
-		
-		return (Categorie) query.getSingleResult();
 	}
 
 }
