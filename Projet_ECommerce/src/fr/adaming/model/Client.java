@@ -26,6 +26,7 @@ public class Client  implements Serializable{
 	private String adresse;
 	private String email;
 	private String tel;
+	private String mdp;
 	
 	
 	//transformation association UML en Java :
@@ -37,20 +38,22 @@ public class Client  implements Serializable{
 	public Client() {
 		super();
 	}
-	public Client(String nomClient, String adresse, String email, String tel) {
+	public Client(String nomClient, String adresse, String email, String tel, String mdp) {
 		super();
 		this.nomClient = nomClient;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
+		this.mdp = mdp;
 	}
-	public Client(long idClient, String nomClient, String adresse, String email, String tel) {
+	public Client(long idClient, String nomClient, String adresse, String email, String tel, String mdp) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
+		this.mdp = mdp;
 	}
 	
 	
@@ -84,6 +87,12 @@ public class Client  implements Serializable{
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public String getMdp() {
+		return mdp;
+	}
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 	public List<Commande> getListeCommande() {
 		return listeCommande;
