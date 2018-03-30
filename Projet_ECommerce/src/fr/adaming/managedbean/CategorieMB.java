@@ -77,18 +77,20 @@ public class CategorieMB implements Serializable   {
 	}
 	
 	
-	
-	
-	
-	//méthodes metier 
-	
-public boolean isIndice() {
+	public boolean isIndice() {
 		return indice;
 	}
 
 	public void setIndice(boolean indice) {
 		this.indice = indice;
 	}
+	
+	
+	
+	
+	//méthodes metier 
+	
+
 
 	//ajouter une categorie  :
 	public String ajouterCategorie()
@@ -109,6 +111,7 @@ public boolean isIndice() {
 		}
 		else
 		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout categorie : fail !!!"));
 			return "ajouterCategorie";
 		}
 		
@@ -133,6 +136,7 @@ public boolean isIndice() {
 		}
 		else
 		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modif categorie : fail !!!"));
 			return "modifierCategorier";
 		}
 	}
@@ -156,6 +160,8 @@ public boolean isIndice() {
 		}
 		else
 		{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression categorie : fail !!!"));
+
 			return "supprimerCategorie";
 		}
 	}
