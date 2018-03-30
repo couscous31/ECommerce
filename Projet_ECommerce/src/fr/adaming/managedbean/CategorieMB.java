@@ -1,6 +1,7 @@
 package fr.adaming.managedbean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -30,6 +31,7 @@ public class CategorieMB implements Serializable {
 	private Categorie categorie;
 	private Agent agent;
 	private Client client;
+	private List<Categorie> listeCat;
 
 	private boolean indice;
 
@@ -39,6 +41,7 @@ public class CategorieMB implements Serializable {
 	public CategorieMB() {
 		this.categorie = new Categorie();
 		this.indice = false;
+		this.listeCat=new ArrayList<Categorie>();
 	}
 
 	@PostConstruct
@@ -166,8 +169,25 @@ public class CategorieMB implements Serializable {
 
 		// récup et mettre à jour la liste
 		List<Categorie> liste1 = categorieService.consulatationCategorieService(agent);   //, client
-		catSession.setAttribute("categoriesListe", liste1);
+		catSession.setAttribute("categorieListe", liste1);
 
 	}
+	
+	
+	//consultation de l'ensemble de la liste :
+	/*public String consulterListeCategorie()
+	
+	{
+		
+	List<Categorie> catOut=categorieService.consulatationCategorieService(agent);
+	
+	this.listeCat=catOut;
+	
+	return "listeCat";
+		
+	
+		
+	}*/
+	
 
 }
