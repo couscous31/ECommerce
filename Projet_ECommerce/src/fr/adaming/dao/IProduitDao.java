@@ -12,7 +12,7 @@ import fr.adaming.model.Produit;
 
 public interface IProduitDao {
 	
-	public List<Produit> getAllProduit(Agent a, Client cl);
+	public List<Produit> getAllProduit(Agent a);  //, Client cl
 	
 	public Produit addProduit(Produit pr);
 	

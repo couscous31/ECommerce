@@ -18,9 +18,9 @@ public class CategorieServiceImpl implements ICategorieService {
 	private ICategorieDao categorieDao;
 
 	@Override
-	public List<Categorie> consulatationCategorieService(Agent a, Client cl) {
+	public List<Categorie> consulatationCategorieService(Agent a) {   //, Client cl
 		// TODO Auto-generated method stub
-		return categorieDao.consulatationCategorie(a, cl);
+		return categorieDao.consulatationCategorie(a);    //, cl
 	}
 
 	@Override

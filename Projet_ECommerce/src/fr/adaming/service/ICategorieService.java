@@ -11,7 +11,7 @@ import fr.adaming.model.Client;
 @Local
 public interface ICategorieService {
 	
-	public List<Categorie> consulatationCategorieService (Agent a, Client cl);
+	public List<Categorie> consulatationCategorieService (Agent a);   //, Client cl
 	
 	public Categorie ajouterCategorieService (Categorie cat, Agent a);
 

@@ -21,17 +21,17 @@ public class ProduitDaoImpl implements IProduitDao{
 	
 	//Get All Produit
 	@Override
-	public List<Produit> getAllProduit(Agent a, Client cl) {
+	public List<Produit> getAllProduit(Agent a) {   //, Client cl
 		
 		//req jpql
-		String req="SELECT pr FROM Produit AS pr WHERE pr.agent.id=:pIdAg AND pr.client.id=:pIdCl";
+		String req="SELECT pr FROM Produit AS pr WHERE pr.agent.id=:pIdAg ";     //AND pr.client.id=:pIdCl
 		
 		//création de query
 		Query query=em.createQuery(req);
 		
 		//passage des params
 		query.setParameter("pIdAg", a.getId());
-		query.setParameter("pIdCl", cl.getIdClient());
+		//query.setParameter("pIdCl", cl.getIdClient());
 		
 		//envoyer la req et récup résultat
 		return query.getResultList();
@@ -80,7 +80,7 @@ public class ProduitDaoImpl implements IProduitDao{
 		//création du query
 		Query query2=em.createQuery(req2);
 		
-		//passage des params
+		//passages des params
 		query2.setParameter("pDesi", pr.getDesignation());
 		query2.setParameter("pDesc", pr.getDescription());
 		query2.setParameter("pPrix", pr.getPrix());

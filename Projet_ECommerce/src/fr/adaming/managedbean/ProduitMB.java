@@ -42,14 +42,14 @@ public class ProduitMB implements Serializable {
 		this.indice = false;
 	}
 
-	// Méthode Session
+	// Méthodes Session
 	@PostConstruct
 	public void init() {
 		// récup de la session ouverte
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
 		// récup agent de session
-		this.agent = (Agent) maSession.getAttribute("agentSession");
+		this.agent = (Agent) maSession.getAttribute("agentListe");
 
 	}
 
@@ -96,7 +96,7 @@ public class ProduitMB implements Serializable {
 
 		if (prAjout.getId() != 0) {
 			// récup et mettre à jour la liste
-			List<Produit> liste = produitService.getAllProduit(agent, client);
+			List<Produit> liste = produitService.getAllProduit(agent);   //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -113,7 +113,7 @@ public class ProduitMB implements Serializable {
 
 		if (prModif != 0) {
 			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit(agent, client);
+			List<Produit> liste = produitService.getAllProduit(agent);  //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -130,7 +130,7 @@ public class ProduitMB implements Serializable {
 
 		if (prSuppr != 0) {
 			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit(agent, client);
+			List<Produit> liste = produitService.getAllProduit(agent);    //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -172,11 +172,13 @@ public class ProduitMB implements Serializable {
 		produitService.updateProduit((Produit) event.getObject(), agent);
 
 		// récupérer la nouvelle liste :
-		List<Produit> liste = produitService.getAllProduit(agent, client);
+		List<Produit> liste = produitService.getAllProduit(agent);   //, client
 
 		// mettre à jour la liste dans la session :
 		maSession.setAttribute("produitsListe", liste);
 
 	}
+	
+
 
 }
