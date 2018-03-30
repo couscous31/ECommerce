@@ -12,14 +12,14 @@ import fr.adaming.model.Agent;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IAgentService;
 
-@ManagedBean(name="aMB")
+@ManagedBean(name = "aMB")
 @RequestScoped
 public class AgentManageBean implements Serializable {
 
-	@EJB// Transformation UML en java
+	@EJB // Transformation UML en java
 	IAgentService agentService;
 
-	 // Declarer l'agent comme attribut d'un managebean
+	// Declarer l'agent comme attribut d'un managebean
 	private Agent agent;
 
 	// Constructeur
@@ -47,25 +47,24 @@ public class AgentManageBean implements Serializable {
 
 	// Methodes se connecter
 
-	public String seConnecter(){
-		
-			
-		Agent aOut=agentService.isExist(this.agent);
-		
-		if(aOut!=null){
-			
+	public String seConnecter() {
 
-	return "success";
-		
+		Agent aOut = agentService.isExist(this.agent);
+
+		if (aOut != null) {
+
+			return "success";
+
+		} else {
+			return "echec";
+		}
 	}
-	return"echec";
-}
-	
-	public String seDeconnecter(){
-		
-		//Fermer la session ouvert 
-				FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-			
-				return "login";
+
+	public String seDeconnecter() {
+
+		// Fermer la session ouvert
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+		return "login";
 	}
 }

@@ -11,14 +11,38 @@
 
 <h:body>
 
+	<ui:composition>
+
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:submenu label="Catégories">
+					<p:menuitem value="Consulter la liste" url="#" />
+					<p:menuitem value="Nouvelle catégorie" url="#" />
+					<p:separator />
+					<p:menuitem value="Quit" url="#" />
+				</p:submenu>
+
+				<p:submenu label="Produits">
+					<p:menuitem value="Consulter la liste" url="listepr.xhtml" />
+					<p:menuitem value="Nouveau produit" url="ajoutpr.xhtml" />
+				</p:submenu>
+
+				<p:menuitem value="Quit" url="accueil.xhtml" icon="ui-icon-close" />
+
+				<f:facet name="options">
+					<p:inputText style="margin-right:10px" placeholder="Recherche" />
+					<p:commandButton type="button" value="Logout"
+						icon="ui-icon-extlink" />
+				</f:facet>
+			</p:menubar>
+
+		</h:form>
 
 
 
-
-
-
-
-
+	</ui:composition>
 
 
 </h:body>
