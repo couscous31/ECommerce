@@ -73,6 +73,6 @@ public class AgentManageBean implements Serializable {
 		// Fermer la session ouvert
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
-		return "login";
+		return "accueil";
 	}
 }
