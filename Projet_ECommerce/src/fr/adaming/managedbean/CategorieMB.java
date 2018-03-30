@@ -30,8 +30,6 @@ public class CategorieMB implements Serializable {
 	// déclaration des attributs envoyées à la page :
 	private Categorie categorie;
 	private Agent agent;
-	private Client client;
-	private List<Categorie> listeCat;
 
 	private boolean indice;
 
@@ -41,7 +39,6 @@ public class CategorieMB implements Serializable {
 	public CategorieMB() {
 		this.categorie = new Categorie();
 		this.indice = false;
-		this.listeCat=new ArrayList<Categorie>();
 	}
 
 	@PostConstruct
