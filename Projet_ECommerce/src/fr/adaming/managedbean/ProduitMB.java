@@ -27,7 +27,7 @@ public class ProduitMB implements Serializable{
 	@EJB
 	private IProduitService produitService;
 	
-	//Attributs MB
+	//Attributs du MB
 	private Produit produit;
 	private Agent agent;
 	private Client client;
