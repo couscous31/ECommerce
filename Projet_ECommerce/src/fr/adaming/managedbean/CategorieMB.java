@@ -11,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.RowEditEvent;
+
 import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
@@ -157,6 +159,16 @@ public class CategorieMB implements Serializable {
 			return "rechercherCategorieParId";
 
 		}
+	}
+	
+	public void edittable(RowEditEvent event) {
+		// appel de la méthode
+		categorieService.modifierCategorieService((Categorie) event.getObject(), agent);
+
+		// récup et mettre à jour la liste
+		List<Categorie> liste1=categorieService.consulatationCategorieService(agent, client);
+		catSession.setAttribute("categoriesListe", liste1);
+
 	}
 
 }
