@@ -33,9 +33,9 @@ public class CategorieMB implements Serializable {
 
 	private boolean indice;
 
-	// constructeur vide :
 	HttpSession catSession;
 
+	// constructeur vide :
 	public CategorieMB() {
 		this.categorie = new Categorie();
 		this.indice = false;
@@ -47,10 +47,7 @@ public class CategorieMB implements Serializable {
 		catSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
 		// récupérer l'agent stocké dans la session :
-		this.agent = (Agent) catSession.getAttribute("agentListe"); /// VERIFIER
-																	/// LE NOM
-																	/// DE
-																	/// agentListe
+		this.agent = (Agent) catSession.getAttribute("agentListe");
 
 	}
 
@@ -150,23 +147,25 @@ public class CategorieMB implements Serializable {
 			Categorie catOut = categorieService.getCategorieByIdService(categorie, agent);
 
 			this.categorie = catOut;
+			this.indice = true;
 
 			return "rechercherCategorieParId";
 
 		} catch (Exception ex) {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la categorie n'existe pas"));
+			this.indice = false;
 			return "rechercherCategorieParId";
 
 		}
 	}
-	
+
 	public void edittable(RowEditEvent event) {
 		// appel de la méthode
 		categorieService.modifierCategorieService((Categorie) event.getObject(), agent);
 
 		// récup et mettre à jour la liste
-		List<Categorie> liste1=categorieService.consulatationCategorieService(agent, client);
+		List<Categorie> liste1 = categorieService.consulatationCategorieService(agent, client);
 		catSession.setAttribute("categoriesListe", liste1);
 
 	}
