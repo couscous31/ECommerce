@@ -12,6 +12,8 @@ import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IAgentService;
+import fr.adaming.service.ICategorieService;
+import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "aMB")
 @RequestScoped
@@ -19,6 +21,12 @@ public class AgentManageBean implements Serializable {
 
 	@EJB // Transformation UML en java
 	IAgentService agentService;
+	
+	@EJB
+	ICategorieService categorieService;
+	
+	@EJB
+	IProduitService produitService;
 
 	// Declarer l'agent comme attribut d'un managebean
 	private Agent agent;
