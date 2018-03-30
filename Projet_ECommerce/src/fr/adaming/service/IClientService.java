@@ -6,10 +6,15 @@ import javax.ejb.Local;
 
 import fr.adaming.model.Client;
 
-
 @Local
-public interface IClientService  {
-	
-	public List<Client> getAllListClientService (Client cl);
+public interface IClientService {
+
+	public List<Client> getAllListClientService(Client cl);
+
+	public Client addClientService(Client cl);
+
+	public int updateService(Client cl);
+
+	public int deleteService(Client cl);
 
 }

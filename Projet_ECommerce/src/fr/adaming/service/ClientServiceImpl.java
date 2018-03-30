@@ -20,4 +20,24 @@ public class ClientServiceImpl implements IClientService {
 		return ClientDao.getAllListClient(cl);
 	}
 
+	@Override
+	public Client addClientService(Client cl) {
+		
+		return ClientDao.addClient(cl);
+	}
+
+	@Override
+	public int updateService(Client cl) {
+		// TODO Auto-generated method stub
+		return ClientDao.update(cl);
+	}
+
+	@Override
+	public int deleteService(Client cl) {
+		// TODO Auto-generated method stub
+		return ClientDao.delete(cl);
+	}
+	
+
+
 }
