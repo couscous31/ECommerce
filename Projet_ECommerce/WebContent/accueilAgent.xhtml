@@ -22,15 +22,15 @@
 				<p:dataTable var="cat" value="#{catMB.categorie}" reflow="true"
 					rows="5" paginator="true">
 					<p:column headerText="Id">
-						<h:outputText value="#{cat.id}" />
+						<h:outputText value="#{cat.idCategorie}" />
 					</p:column>
 
 					<p:column headerText="Nom">
-						<h:outputText value="#{cat.nom}" />
+						<h:outputText value="#{cat.nomCategorie}" />
 					</p:column>
 
 					<p:column headerText="Photo">
-						<p:graphicImage value="#{pr.photo}" />
+						<p:graphicImage value="#{pr.photoCat}" />
 					</p:column>
 					
 					<p:column headerText="Description">
@@ -67,7 +67,7 @@
 					</p:column>
 
 					<p:column headerText="Photo">
-						<p:graphicImage value="#{pr.photo}" />
+						<p:graphicImage value="#{pr.photoProd}" />
 					</p:column>
 				</p:dataTable>
 
