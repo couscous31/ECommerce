@@ -9,6 +9,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import fr.adaming.model.Agent;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IAgentService;
 
@@ -21,11 +22,15 @@ public class AgentManageBean implements Serializable {
 
 	// Declarer l'agent comme attribut d'un managebean
 	private Agent agent;
+	private List<Categorie> CategorieListe;
+	private List<Produit> produitsListe;
+	
 
 	// Constructeur
-	public AgentManageBean(Agent agent) {
-		this.agent = agent;
+	public AgentManageBean() {
+		this.agent = new Agent() ;
 	}
+	
 
 	// G+S
 
@@ -52,7 +57,10 @@ public class AgentManageBean implements Serializable {
 		Agent aOut = agentService.isExist(this.agent);
 
 		if (aOut != null) {
-
+			
+			// Ajouter l'agent comme attribut de la session
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentSession", aOut);
+			
 			return "success";
 
 		} else {
