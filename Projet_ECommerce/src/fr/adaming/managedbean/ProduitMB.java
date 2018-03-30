@@ -32,11 +32,14 @@ public class ProduitMB implements Serializable {
 	private Agent agent;
 	private Client client;
 
+	private boolean indice;
+
 	HttpSession maSession;
 
 	// Constructeur vide
 	public ProduitMB() {
 		this.produit = new Produit();
+		this.indice = false;
 	}
 
 	// Méthode Session
@@ -73,6 +76,14 @@ public class ProduitMB implements Serializable {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public boolean isIndice() {
+		return indice;
+	}
+
+	public void setIndice(boolean indice) {
+		this.indice = indice;
 	}
 
 	// Méthodes
@@ -140,6 +151,7 @@ public class ProduitMB implements Serializable {
 			Produit prSear = produitService.getProduitById(produit, agent);
 
 			this.produit = prSear;
+			this.indice = true;
 
 			return "rechercherProduitById";
 
@@ -147,6 +159,7 @@ public class ProduitMB implements Serializable {
 
 		catch (Exception ex) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("le produit n'existe pas"));
+			this.indice = false;
 			return "rechercherProduitById";
 
 		}
