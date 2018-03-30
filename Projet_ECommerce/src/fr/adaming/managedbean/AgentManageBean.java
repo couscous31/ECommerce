@@ -22,17 +22,36 @@ public class AgentManageBean implements Serializable {
 
 	// Declarer l'agent comme attribut d'un managebean
 	private Agent agent;
-	private List<Categorie> CategorieListe;
-	private List<Produit> produitsListe;
+	private List<Categorie> listeCetegorie;;
+	private List<Produit> listeProduit;
 	
 
 	// Constructeur
 	public AgentManageBean() {
 		this.agent = new Agent() ;
 	}
-	
 
 	// G+S
+
+	public List<Categorie> getListeCetegorie() {
+		return listeCetegorie;
+	}
+
+
+	public void setListeCetegorie(List<Categorie> listeCetegorie) {
+		this.listeCetegorie = listeCetegorie;
+	}
+
+
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
+	}
+
 
 	public IAgentService getAgentService() {
 		return agentService;
