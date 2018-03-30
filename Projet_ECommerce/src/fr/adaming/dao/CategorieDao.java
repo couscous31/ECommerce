@@ -19,14 +19,14 @@ public class CategorieDao implements ICategorieDao {
 	@Override
 	public List<Categorie> consulatationCategorie(Agent a , Client cl) {
 		//creation de la requete SQl:
-		String req="select cat from Categorie as cat where cat.agent.id=:pIdAg and cat.client.id=:pIdCl";
+		String req="select cat from Categorie as cat where cat.agent.id=:pIdAg ";   //and cat.client.id=:pIdCl
 		
 		//création d'un query :
 		Query query=em.createQuery(req);
 		
 		//passage des parametres :
 		query.setParameter("pIdAg", a.getId());
-		query.setParameter("pIdCl", cl.getIdClient());
+		//query.setParameter("pIdCl", cl.getIdClient());
 		
 		//envoyer la requete et recuperer le resultat  :		
 		return query.getResultList();

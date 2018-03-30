@@ -49,7 +49,7 @@ public class ProduitMB implements Serializable {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
 		// récup agent de session
-		this.agent = (Agent) maSession.getAttribute("agentSession");
+		this.agent = (Agent) maSession.getAttribute("agentListe");
 
 	}
 

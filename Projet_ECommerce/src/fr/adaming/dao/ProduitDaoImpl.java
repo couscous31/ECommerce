@@ -24,14 +24,14 @@ public class ProduitDaoImpl implements IProduitDao{
 	public List<Produit> getAllProduit(Agent a, Client cl) {
 		
 		//req jpql
-		String req="SELECT pr FROM Produit AS pr WHERE pr.agent.id=:pIdAg AND pr.client.id=:pIdCl";
+		String req="SELECT pr FROM Produit AS pr WHERE pr.agent.id=:pIdAg ";     //AND pr.client.id=:pIdCl
 		
 		//création de query
 		Query query=em.createQuery(req);
 		
 		//passage des params
 		query.setParameter("pIdAg", a.getId());
-		query.setParameter("pIdCl", cl.getIdClient());
+		//query.setParameter("pIdCl", cl.getIdClient());
 		
 		//envoyer la req et récup résultat
 		return query.getResultList();

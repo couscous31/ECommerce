@@ -86,9 +86,9 @@ public class AgentManageBean implements Serializable {
 		if (aOut != null) {
 			
 			// Ajouter l'agent comme attribut de la session
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentSession", aOut);
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ProduitListe", this.listeProduit);
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("CategorieListe", this.listeCetegorie);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentListe", aOut);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitsListe", this.listeProduit);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", this.listeCetegorie);
 			
 			return "success";
 
