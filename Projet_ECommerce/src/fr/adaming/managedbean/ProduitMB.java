@@ -92,11 +92,11 @@ public class ProduitMB implements Serializable {
 	public String ajouterProduit() {
 
 		// appel de la méthode
-		Produit prAjout = produitService.addProduit(produit, agent);
+		Produit prAjout = produitService.addProduit(produit);
 
 		if (prAjout.getId() != 0) {
 			// récup et mettre à jour la liste
-			List<Produit> liste = produitService.getAllProduit(agent);   //, client
+			List<Produit> liste = produitService.getAllProduit();   //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -109,11 +109,11 @@ public class ProduitMB implements Serializable {
 	// modifier les attributs d'un produit
 	public String modifierProduit() {
 		// appel de la methode
-		int prModif = produitService.updateProduit(produit, agent);
+		int prModif = produitService.updateProduit(produit);
 
 		if (prModif != 0) {
 			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit(agent);  //, client
+			List<Produit> liste = produitService.getAllProduit();  //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -126,11 +126,11 @@ public class ProduitMB implements Serializable {
 
 	// supprimer un produit de la liste :
 	public String supprimerProduit() {
-		int prSuppr = produitService.deleteProduit(produit, agent);
+		int prSuppr = produitService.deleteProduit(produit);
 
 		if (prSuppr != 0) {
 			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit(agent);    //, client
+			List<Produit> liste = produitService.getAllProduit();    //, client
 			maSession.setAttribute("produitsListe", liste);
 
 			return "accueilAgent";
@@ -148,7 +148,7 @@ public class ProduitMB implements Serializable {
 	public String rechercherProduitById() {
 
 		try {
-			Produit prSear = produitService.getProduitById(produit, agent);
+			Produit prSear = produitService.getProduitById(produit);
 
 			this.produit = prSear;
 			this.indice = true;
@@ -169,10 +169,10 @@ public class ProduitMB implements Serializable {
 	// methode pour la table edit
 	public void editTable(RowEditEvent event) {
 		// appel de la methode modifier d'un produit :
-		produitService.updateProduit((Produit) event.getObject(), agent);
+		produitService.updateProduit((Produit) event.getObject());
 
 		// récupérer la nouvelle liste :
-		List<Produit> liste = produitService.getAllProduit(agent);   //, client
+		List<Produit> liste = produitService.getAllProduit();   //, client
 
 		// mettre à jour la liste dans la session :
 		maSession.setAttribute("produitsListe", liste);

@@ -84,16 +84,14 @@ public class CategorieMB implements Serializable {
 	// ajouter une categorie :
 	public String ajouterCategorie() {
 		// appel de la methode
-		Categorie catOut = categorieService.ajouterCategorieService(categorie, agent);
+		Categorie catOut = categorieService.ajouterCategorieService(categorie);
 
 		if (catOut.getIdCategorie() != 0) {
 			// recuperer la nouvelle liste de categorie :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent);   //, client
+			List<Categorie> liste = categorieService.consulatationCategorieService();  
 
 			// mettre à jour la session :
-			catSession.setAttribute("categorieListe", liste); /// VERIFIER LE
-																/// NOM DE
-																/// categorieListe
+			catSession.setAttribute("categorieListe", liste); 
 
 			return "accueilAgent";
 
@@ -107,11 +105,11 @@ public class CategorieMB implements Serializable {
 	// modifier categorie :
 	public String modifierCategorie() {
 		// appel de la methode :
-		int verif = categorieService.modifierCategorieService(categorie, agent);
+		int verif = categorieService.modifierCategorieService(categorie);
 
 		if (verif != 0) {
 			// récuperer la nouvelle liste de categories :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent);   //, client
+			List<Categorie> liste = categorieService.consulatationCategorieService(); 
 
 			// mettre à jour la session :
 			catSession.setAttribute("categorieListe", liste);
@@ -126,11 +124,11 @@ public class CategorieMB implements Serializable {
 	// supprimer categories :
 	public String supprimerCategorie() {
 
-		int verif = categorieService.supprimerCategorie(categorie, agent);
+		int verif = categorieService.supprimerCategorie(categorie);
 
 		if (verif != 0) {
 			// recuperer la nouvelle liste :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent);    //, client
+			List<Categorie> liste = categorieService.consulatationCategorieService();   
 
 			// mettre à jour la session :
 			catSession.setAttribute("categorieListe", liste);
@@ -147,7 +145,7 @@ public class CategorieMB implements Serializable {
 	public String rechercherCategorieById() {
 		try {
 
-			Categorie catOut = categorieService.getCategorieByIdService(categorie, agent);
+			Categorie catOut = categorieService.getCategorieByIdService(categorie);
 
 			this.categorie = catOut;
 			this.indice = true;
@@ -165,10 +163,10 @@ public class CategorieMB implements Serializable {
 
 	public void edittable(RowEditEvent event) {
 		// appel de la méthode
-		categorieService.modifierCategorieService((Categorie) event.getObject(), agent);
+		categorieService.modifierCategorieService((Categorie) event.getObject());
 
 		// récup et mettre à jour la liste
-		List<Categorie> liste1 = categorieService.consulatationCategorieService(agent);   //, client
+		List<Categorie> liste1 = categorieService.consulatationCategorieService(); 
 		catSession.setAttribute("categorieListe", liste1);
 
 	}

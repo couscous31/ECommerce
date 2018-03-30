@@ -12,15 +12,15 @@ import fr.adaming.model.Produit;
 
 public interface IProduitService {
 	
-	public List<Produit> getAllProduit(Agent a);   //, Client cl
+	public List<Produit> getAllProduit(); 
 	
-	public Produit addProduit(Produit pr, Agent a);
+	public Produit addProduit(Produit pr);
 	
-	public int deleteProduit(Produit pr, Agent a);
+	public int deleteProduit(Produit pr);
 	
-	public int updateProduit(Produit pr, Agent a);
+	public int updateProduit(Produit pr);
 	
-	public Produit getProduitById(Produit pr, Agent a);
+	public Produit getProduitById(Produit pr);
 
 
 }

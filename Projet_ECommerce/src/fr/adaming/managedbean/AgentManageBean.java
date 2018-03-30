@@ -105,7 +105,7 @@ public class AgentManageBean implements Serializable {
 		Agent aOut = agentService.isExist(this.agent);
 		//Client clOut= clientService.isExist(this.client);
 		
-		this.listeProduit=produitService.getAllProduit(aOut);   //, clOut
+		this.listeProduit=produitService.getAllProduit();   //, clOut
 		//this.listeCetegorie=categorieService.consulatationCategorieService(aOut, clOut);
 
 		if (aOut != null) {

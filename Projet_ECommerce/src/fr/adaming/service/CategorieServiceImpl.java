@@ -18,34 +18,27 @@ public class CategorieServiceImpl implements ICategorieService {
 	private ICategorieDao categorieDao;
 
 	@Override
-	public List<Categorie> consulatationCategorieService(Agent a) {   //, Client cl
-		// TODO Auto-generated method stub
-		return categorieDao.consulatationCategorie(a);    //, cl
+	public List<Categorie> consulatationCategorieService() { 
+		return categorieDao.consulatationCategorie(); 
 	}
 
 	@Override
-	public Categorie ajouterCategorieService(Categorie cat, Agent a) {
-		 cat.setAgent(a);
+	public Categorie ajouterCategorieService(Categorie cat) {
 		return categorieDao.ajouterCategorie(cat);
 	}
 
 	@Override
-	public int modifierCategorieService(Categorie cat, Agent a) {
-		cat.setAgent(a);
+	public int modifierCategorieService(Categorie cat) {
 		return categorieDao.modifierCategorie(cat);
 	}
 
 	@Override
-	public int supprimerCategorie(Categorie cat, Agent a) {
-		cat.setAgent(a);
+	public int supprimerCategorie(Categorie cat) {
 		return categorieDao.supprimerCategorie(cat);
 	}
 
 	@Override
-	public Categorie getCategorieByIdService(Categorie cat, Agent a) {
-		 
-		 cat.setAgent(a);
-		
+	public Categorie getCategorieByIdService(Categorie cat) {
 		return categorieDao.getCategorieById(cat);
 	}
 

@@ -19,31 +19,27 @@ public class ProduitServiceImpl implements IProduitService{
 	private IProduitDao produitDao;
 
 	@Override
-	public List<Produit> getAllProduit(Agent a) {   //, Client cl
-		return produitDao.getAllProduit(a);    //, cl
+	public List<Produit> getAllProduit() {  
+		return produitDao.getAllProduit();    
 	}
 
 	@Override
-	public Produit addProduit(Produit pr, Agent a) {
-		pr.setAgent(a);
+	public Produit addProduit(Produit pr) {
 		return produitDao.addProduit(pr);
 	}
 
 	@Override
-	public int deleteProduit(Produit pr, Agent a) {
-		pr.setAgent(a);
+	public int deleteProduit(Produit pr) {
 		return produitDao.deleteProduit(pr);
 	}
 
 	@Override
-	public int updateProduit(Produit pr, Agent a) {
-		pr.setAgent(a);
+	public int updateProduit(Produit pr) {
 		return produitDao.updateProduit(pr);
 	}
 
 	@Override
-	public Produit getProduitById(Produit pr, Agent a) {
-		pr.setAgent(a);
+	public Produit getProduitById(Produit pr) {
 		return produitDao.getProduitById(pr);
 	}
 	
