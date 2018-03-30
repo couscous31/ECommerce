@@ -28,7 +28,7 @@ public class AgentManageBean implements Serializable {
 	@EJB
 	IProduitService produitService;
 
-	// Declarer l'agent comme attribut d'un managebean
+	// Declarer l'agent comme attribut d'un Managebean
 	private Agent agent;
 	private List<Categorie> listeCetegorie;;
 	private List<Produit> listeProduit;

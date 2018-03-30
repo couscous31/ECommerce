@@ -80,7 +80,7 @@ public class ProduitDaoImpl implements IProduitDao{
 		//création du query
 		Query query2=em.createQuery(req2);
 		
-		//passage des params
+		//passages des params
 		query2.setParameter("pDesi", pr.getDesignation());
 		query2.setParameter("pDesc", pr.getDescription());
 		query2.setParameter("pPrix", pr.getPrix());

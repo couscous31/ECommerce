@@ -42,7 +42,7 @@ public class ProduitMB implements Serializable {
 		this.indice = false;
 	}
 
-	// Méthode Session
+	// Méthodes Session
 	@PostConstruct
 	public void init() {
 		// récup de la session ouverte

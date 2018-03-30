@@ -120,7 +120,7 @@ public class CategorieMB implements Serializable {
 		}
 	}
 
-	// supprimer categorie :
+	// supprimer categories :
 	public String supprimerCategorie() {
 
 		int verif = categorieService.supprimerCategorie(categorie, agent);

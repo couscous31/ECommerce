@@ -88,7 +88,7 @@ public class CategorieDao implements ICategorieDao {
 		//creation du query :
 		Query query = em.createQuery(req);
 		
-		//passage des parametres :
+		//passages des parametres :
 		query.setParameter("pIdCat", cat.getIdCategorie());
 		query.setParameter("pIdAg", cat.getAgent().getId());
 		
