@@ -21,7 +21,7 @@ public class ProduitDaoImpl implements IProduitDao{
 	
 	//Get All Produit
 	@Override
-	public List<Produit> getAllProduit(Agent a, Client cl) {
+	public List<Produit> getAllProduit(Agent a) {   //, Client cl
 		
 		//req jpql
 		String req="SELECT pr FROM Produit AS pr WHERE pr.agent.id=:pIdAg ";     //AND pr.client.id=:pIdCl

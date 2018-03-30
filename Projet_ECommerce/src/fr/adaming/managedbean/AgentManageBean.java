@@ -10,9 +10,11 @@ import javax.faces.context.FacesContext;
 
 import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
+import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IAgentService;
 import fr.adaming.service.ICategorieService;
+import fr.adaming.service.IClientService;
 import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "aMB")
@@ -27,16 +29,21 @@ public class AgentManageBean implements Serializable {
 	
 	@EJB
 	IProduitService produitService;
+	
+	@EJB
+	IClientService clientService;
 
 	// Declarer l'agent comme attribut d'un Managebean
 	private Agent agent;
 	private List<Categorie> listeCetegorie;;
 	private List<Produit> listeProduit;
+	private Client client;
 	
 
 	// Constructeur
 	public AgentManageBean() {
 		this.agent = new Agent() ;
+		this.client=new Client();
 	}
 
 	// G+S
@@ -76,14 +83,34 @@ public class AgentManageBean implements Serializable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
+	
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
+	
+	
 
 	// Methodes se connecter
+
+	
 
 	public String seConnecter() {
 
 		Agent aOut = agentService.isExist(this.agent);
+		//Client clOut= clientService.isExist(this.client);
+		
+		this.listeProduit=produitService.getAllProduit(aOut);   //, clOut
+		//this.listeCetegorie=categorieService.consulatationCategorieService(aOut, clOut);
 
 		if (aOut != null) {
+			
+			
 			
 			// Ajouter l'agent comme attribut de la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentListe", aOut);

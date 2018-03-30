@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
+//import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import fr.adaming.model.Agent;
@@ -13,11 +14,11 @@ import fr.adaming.model.Client;
 
 @Stateless
 public class CategorieDao implements ICategorieDao {
-	@PersistenceUnit(unitName="pu")
+	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
 	@Override
-	public List<Categorie> consulatationCategorie(Agent a , Client cl) {
+	public List<Categorie> consulatationCategorie(Agent a ) {   //, Client cl
 		//creation de la requete SQl:
 		String req="select cat from Categorie as cat where cat.agent.id=:pIdAg ";   //and cat.client.id=:pIdCl
 		
@@ -36,6 +37,9 @@ public class CategorieDao implements ICategorieDao {
 	public Categorie ajouterCategorie(Categorie cat) {
 		//ajouter dans la table :
 		em.persist(cat);
+		
+	
+		
 		
 		return cat;
 	}

@@ -85,7 +85,7 @@ public class CategorieMB implements Serializable {
 
 		if (catOut.getIdCategorie() != 0) {
 			// recuperer la nouvelle liste de categorie :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent, client);
+			List<Categorie> liste = categorieService.consulatationCategorieService(agent);   //, client
 
 			// mettre à jour la session :
 			catSession.setAttribute("categorieListe", liste); /// VERIFIER LE
@@ -108,7 +108,7 @@ public class CategorieMB implements Serializable {
 
 		if (verif != 0) {
 			// récuperer la nouvelle liste de categories :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent, client);
+			List<Categorie> liste = categorieService.consulatationCategorieService(agent);   //, client
 
 			// mettre à jour la session :
 			catSession.setAttribute("categorieListe", liste);
@@ -127,7 +127,7 @@ public class CategorieMB implements Serializable {
 
 		if (verif != 0) {
 			// recuperer la nouvelle liste :
-			List<Categorie> liste = categorieService.consulatationCategorieService(agent, client);
+			List<Categorie> liste = categorieService.consulatationCategorieService(agent);    //, client
 
 			// mettre à jour la session :
 			catSession.setAttribute("categorieListe", liste);
@@ -165,7 +165,7 @@ public class CategorieMB implements Serializable {
 		categorieService.modifierCategorieService((Categorie) event.getObject(), agent);
 
 		// récup et mettre à jour la liste
-		List<Categorie> liste1 = categorieService.consulatationCategorieService(agent, client);
+		List<Categorie> liste1 = categorieService.consulatationCategorieService(agent);   //, client
 		catSession.setAttribute("categoriesListe", liste1);
 
 	}

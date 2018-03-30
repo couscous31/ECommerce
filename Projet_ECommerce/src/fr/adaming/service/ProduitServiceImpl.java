@@ -19,8 +19,8 @@ public class ProduitServiceImpl implements IProduitService{
 	private IProduitDao produitDao;
 
 	@Override
-	public List<Produit> getAllProduit(Agent a, Client cl) {
-		return produitDao.getAllProduit(a, cl);
+	public List<Produit> getAllProduit(Agent a) {   //, Client cl
+		return produitDao.getAllProduit(a);    //, cl
 	}
 
 	@Override

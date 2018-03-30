@@ -73,15 +73,15 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public Client isExist(Client cl) {
 
-		String req = "SELECT cl FROM Client as cl WHERE cl.mail=:pMail AND ag.mdp=:pMdp";
+		String req = "SELECT cl FROM Client as cl WHERE cl.email=:pMail AND cl.mdp=:pMdp";
 
-		Query query = em.createQuery(req);
+		Query query1 = em.createQuery(req);
 
 		// Passage des params
-		query.setParameter("pMail", cl.getEmail());
-		query.setParameter("pMdp", cl.getMdp());
+		query1.setParameter("pMail", cl.getEmail());
+		query1.setParameter("pMdp", cl.getMdp());
 
-		return (Client) query.getSingleResult();
+		return (Client) query1.getSingleResult();
 	}
 
 }

@@ -19,7 +19,7 @@
 			<h:form>
 
 				<h3>Catégories</h3>
-				<p:dataTable var="cat" value="#{catMB.categorie}" reflow="true"
+				<p:dataTable var="cat" value="#{sessionScope.categorieListe}" reflow="true"
 					rows="5" paginator="true">
 					<p:column headerText="Id">
 						<h:outputText value="#{cat.idCategorie}" />
@@ -44,7 +44,7 @@
 			<h:form>
 
 				<h3>Produits</h3>
-				<p:dataTable var="pr" value="#{prMB.produit}" reflow="true" rows="5"
+				<p:dataTable var="pr" value="#{sessionScope.produitsListe}" reflow="true" rows="5"
 					paginator="true">
 					<p:column headerText="Id">
 						<h:outputText value="#{pr.id}" />
