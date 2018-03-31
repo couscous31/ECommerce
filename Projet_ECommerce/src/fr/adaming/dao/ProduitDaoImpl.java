@@ -5,109 +5,96 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+//import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import fr.adaming.model.Agent;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
-import fr.adaming.model.Produit;
 
 @Stateless
-
-public class ProduitDaoImpl implements IProduitDao{
-	
+public class CategorieDao implements ICategorieDao {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	
-	//Get All Produit
 	@Override
-	public List<Produit> getAllProduit() { 
+	public List<Categorie> consulatationCategorie( ) { 
+		//creation de la requete SQl:
+		String req="select cat from Categorie as cat ";   
 		
-		//req jpql
-		String req="SELECT pr FROM Produit AS pr ";   
-		
-		//création de query
+		//création d'un query :
 		Query query=em.createQuery(req);
 		
-		//envoyer la req et récup résultat
+		//envoyer la requete et recuperer le resultat  :		
 		return query.getResultList();
 	}
-	
-	
-	//Add Produit
+
 	@Override
-	public Produit addProduit(Produit pr) {
-		em.persist(pr);
-		return pr;
+	public Categorie ajouterCategorie(Categorie cat) {
+		//ajouter dans la table :
+		em.persist(cat);
+		
+	
+		
+		
+		return cat;
 	}
 
-	
-	//Delete Produit
 	@Override
-	public int deleteProduit(Produit pr) {
+	public int modifierCategorie(Categorie cat) {
+         //creation de la requete :
+		String req="update Categorie cat set cat.nomCategorie=:pNom, cat.photoCat=:pPhoto , cat.description=pDescription where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg ";
 		
-		//req jpql
-		String req1="DELETE FROM produits AS pr WHERE pr.id=:pIdPr AND pr.agent.id=:pIdA";
-		
-		//création de query
-		Query query1=em.createQuery(req1);
-		
-		//passage des params
-		query1.setParameter("pIdPr", pr.getId());
-		query1.setParameter("pIdA", pr.getAgent().getId());
+		//creation d'un query :
+		Query query=em.createQuery(req);
 
-		//envoyer la req et récup résultat
-		return (int) query1.executeUpdate();
+		//passages des parametres :
+		query.setParameter("pNom",  cat.getNomCategorie() );
+		query.setParameter("pPhoto", cat.getPhotoCat());
+		query.setParameter("pDescription", cat.getDescription());
+		query.setParameter("pIdCat", cat.getIdCategorie());
+		query.setParameter("pIdAg", cat.getAgent().getId());
+		
+		//envoyer la requete et récupérer le résultat
+		int verif= query.executeUpdate();
+		
+		return verif;
 	}
 
-	
-	//Update Produit
 	@Override
-	public int updateProduit(Produit pr) {
-
-		//req jpql
-		String req2="UPDATE Produit SET pr.designation=:pDesi,"
-									+ "pr.description=:pDesc,"
-									+ "pr.prix=:pPrix,"
-									+ "pr.quantite=:pQt,"
-									+ "pr.photoProd=:pPhoto"
-									+ " WHERE pr.id=:pIdPr AND pr.agent.id=:pIdAg";
+	public int supprimerCategorie(Categorie cat) {
+		// creation de la requete :
+		String req="delete from Categorie where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg ";
 		
-		//création du query
-		Query query2=em.createQuery(req2);
+		//creation du query :
+		Query query = em.createQuery(req);
 		
-		//passages des params
-		query2.setParameter("pDesi", pr.getDesignation());
-		query2.setParameter("pDesc", pr.getDescription());
-		query2.setParameter("pPrix", pr.getPrix());
-		query2.setParameter("pQt", pr.getQuantite());
-		query2.setParameter("pPhoto", pr.getPhotoProd());
-		query2.setParameter("pIdPr", pr.getId());
-		query2.setParameter("pIdAg", pr.getAgent().getId());
+		//passage des parametres :
+		query.setParameter("pIdCat", cat.getIdCategorie());
+		query.setParameter("pIdAg",cat.getAgent().getId());
 		
-		//envoyer req et récup résultat
-		return (int) query2.executeUpdate();
+		//envoyer la requete et recuperer le resultat :
+		int verif=query.executeUpdate();
+		
+		return verif;
 	}
 
-	
-	//Get Produit By Id
 	@Override
-	public Produit getProduitById(Produit pr) {
+	public Categorie getCategorieById(Categorie cat) {
 
-		//req jpql
-		String req3="SELECT pr FROM Produit AS pr WHERE pr.id=:pIdPr AND pr.agent.id=:pIdAg";
+		//appel de la requete :
+		String req = "select cat from Categorie where cat.idCategorie=:pId and cat.agent.id=:pIdAg";
 		
-		//création de query
-		Query query3=em.createQuery(req3);
+		//creation du query :
+		Query query = em.createQuery(req);
 		
-		//passage des params
-		query3.setParameter("pIdPr", pr.getId());
-		query3.setParameter("pIdAg", pr.getAgent().getId());
+		//passages des parametres :
+		query.setParameter("pIdCat", cat.getIdCategorie());
+		query.setParameter("pIdAg", cat.getAgent().getId());
 		
-		//envoyer req et récup résultat
-		return (Produit) query3.getSingleResult();
+		
+		return (Categorie) query.getSingleResult() ;
+		
 	}
-
-
 
 }

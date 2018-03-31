@@ -6,29 +6,28 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import fr.adaming.dao.ICategorieDao;
-import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Client;
-
 
 @Stateful
+
 public class CategorieServiceImpl implements ICategorieService {
-	
+
+	// Transfo de l'assos UML en Java
 	@EJB
 	private ICategorieDao categorieDao;
 
 	@Override
-	public List<Categorie> consulatationCategorieService() { 
-		return categorieDao.consulatationCategorie(); 
+	public List<Categorie> consultationCategorie() {
+		return categorieDao.consultationCategorie();
 	}
 
 	@Override
-	public Categorie ajouterCategorieService(Categorie cat) {
+	public Categorie ajouterCategorie(Categorie cat) {
 		return categorieDao.ajouterCategorie(cat);
 	}
 
 	@Override
-	public int modifierCategorieService(Categorie cat) {
+	public int modifierCategorie(Categorie cat) {
 		return categorieDao.modifierCategorie(cat);
 	}
 
@@ -38,7 +37,7 @@ public class CategorieServiceImpl implements ICategorieService {
 	}
 
 	@Override
-	public Categorie getCategorieByIdService(Categorie cat) {
+	public Categorie getCategorieById(Categorie cat) {
 		return categorieDao.getCategorieById(cat);
 	}
 

@@ -16,27 +16,23 @@
 	<ui:composition template="/template/layoutAgent.xhtml">
 		<ui:define name="corps">
 
-<h:form id="form">
-
-				<p:growl id="msgs" showDetail="true" />
+			<h:form>
 
 				<p:dataTable var="cat" value="#{sessionScope.categorieListe}"
 					editable="true" style="text-align: center">
 					<f:facet name="header">Liste des catégories </f:facet>
 
-					<p:ajax event="rowEdit" listener="#{catMB.edittable}"
-						update=":form:msgs" />
-					<p:ajax event="rowEditCancel" listener="#{catMB.edittable}"
-						update=":form:msgs" />
+					<p:ajax event="rowEdit" listener="#{catMB.edittable}"/>
+					<p:ajax event="rowEditCancel" listener="#{catMB.edittable}" />
 
 					<p:column headerText="Id">
 						<p:cellEditor>
 							<f:facet name="output">
-								<h:outputText value="#{catMB.idCategorie}" />
+								<h:outputText value="#{cat.idCategorie}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText id="modelInput" value="#{catMB.idCategorie}"
-									style="width:100%" rendered="false"/>
+								<p:inputText id="modelInput" value="#{cat.idCategorie}"
+									style="width:100%" rendered="false" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
@@ -44,10 +40,11 @@
 					<p:column headerText="Nom">
 						<p:cellEditor>
 							<f:facet name="output">
-								<h:outputText value="#{catMB.nomCategorie}" />
+								<h:outputText value="#{cat.nomCategorie}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText value="#{catMB.nomCategorie}" style="width:100%" label="Nom" />
+								<p:inputText value="#{cat.nomCategorie}" style="width:100%"
+									label="Nom" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
@@ -55,31 +52,31 @@
 					<p:column headerText="Description">
 						<p:cellEditor>
 							<f:facet name="output">
-								<h:outputText value="#{catMB.description}" />
+								<h:outputText value="#{cat.description}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText value="#{catMB.description}" style="width:100%"
+								<p:inputText value="#{cat.description}" style="width:100%"
 									label="Description" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
-					
+
 					<p:column headerText="Photo">
 						<p:cellEditor>
 							<f:facet name="output">
-								<p:graphicImage value="#{catMB.photoCat}" />
+								<p:graphicImage value="#{cat.photoCat}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText value="#{catMB.photoCat}" style="width:100%"
+								<p:inputText value="#{cat.photoCat}" style="width:100%"
 									label="Photo" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
-					
+
 					<p:column headerText="Opération">
-						<h:commandLink value="Supprimer" action="#{catMB.supprimerCategorie}"
-							update="@all">
-							<f:setPropertyActionListener value="#{catMB.idCategorie}"
+						<h:commandLink value="Supprimer"
+							action="#{catMB.supprimerCategorie}" update="@all">
+							<f:setPropertyActionListener value="#{cat.idCategorie}"
 								target="#{catMB.categorie.idCategorie}" />
 						</h:commandLink>
 					</p:column>
