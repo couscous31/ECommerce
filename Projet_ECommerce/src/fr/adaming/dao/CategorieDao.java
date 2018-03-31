@@ -43,7 +43,7 @@ public class CategorieDao implements ICategorieDao {
 	@Override
 	public int modifierCategorie(Categorie cat) {
          //creation de la requete :
-		String req="update Categorie cat set cat.nomCategorie=:pNom, cat.photoCat=:pPhoto , cat.description=pDescription where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg ";
+		String req="update Categorie cat set cat.nomCategorie=:pNom, cat.photoCat=:pPhoto , cat.description=:pDescription where cat.idCategorie=:pIdCat and cat.agent.id=:pIdAg ";
 		
 		//creation d'un query :
 		Query query=em.createQuery(req);
