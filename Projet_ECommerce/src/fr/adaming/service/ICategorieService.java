@@ -4,24 +4,20 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Client;
 
 @Local
+
 public interface ICategorieService {
 	
-	public List<Categorie> consulatationCategorieService ();   
+	public List<Categorie> consultationCategorie();   
 	
-	public Categorie ajouterCategorieService (Categorie cat);
+	public Categorie ajouterCategorie(Categorie cat);
 
-	public int modifierCategorieService (Categorie cat);
+	public int modifierCategorie(Categorie cat);
 
-	public int supprimerCategorie (Categorie cat);
+	public int supprimerCategorie(Categorie cat);
 	
-	public  Categorie getCategorieByIdService(Categorie cat);
-
-
-
+	public  Categorie getCategorieById(Categorie cat);
 
 }
