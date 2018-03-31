@@ -38,7 +38,7 @@ public class ClientDaoImpl implements IClientDao {
 	public int update(Client cl) {
 
 		// Requete
-		String req = "UPDATE Clients cl SET cl.nom=:pNom, cl.adresse=:pAdresse, cl.email=:Email, cl.tel=:pTel, cl.mdp=:pMdp WHERE cl.id=:pId";
+		String req = "UPDATE Clients cl SET cl.nom=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, cl.mdp=:pMdp WHERE cl.id=:pId";
 		// Query
 		Query query = em.createQuery(req);
 		// Passage des parametres
@@ -47,6 +47,7 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("pEmail", cl.getEmail());
 		query.setParameter("pTel", cl.getIdClient());
 		query.setParameter("pMdp", cl.getMdp());
+		query.setParameter("pId", cl.getIdClient());
 
 		int verif = query.executeUpdate();
 
