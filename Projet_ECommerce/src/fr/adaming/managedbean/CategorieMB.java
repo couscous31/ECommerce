@@ -1,7 +1,6 @@
 package fr.adaming.managedbean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,11 +15,11 @@ import org.primefaces.event.RowEditEvent;
 
 import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Client;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "catMB")
 @RequestScoped
+
 public class CategorieMB implements Serializable {
 
 	// transformer association uml en java :
@@ -30,7 +29,6 @@ public class CategorieMB implements Serializable {
 	// déclaration des attributs envoyées à la page :
 	private Categorie categorie;
 	private Agent agent;
-
 	private boolean indice;
 
 	HttpSession catSession;
@@ -51,7 +49,7 @@ public class CategorieMB implements Serializable {
 
 	}
 
-	// get et set
+	// getter et setter
 	public Categorie getCategorie() {
 		return categorie;
 	}
@@ -81,108 +79,61 @@ public class CategorieMB implements Serializable {
 	// ajouter une categorie :
 	public String ajouterCategorie() {
 		// appel de la methode
-		Categorie catOut = categorieService.ajouterCategorieService(categorie);
+		Categorie catOut = categorieService.ajouterCategorie(categorie);
 
 		if (catOut.getIdCategorie() != 0) {
-			// recuperer la nouvelle liste de categorie :
-			List<Categorie> liste = categorieService.consulatationCategorieService();  
-
-			// mettre à jour la session :
-			catSession.setAttribute("categorieListe", liste); 
+			// recuperer et mettre à jour la nouvelle liste de categorie :
+			List<Categorie> liste = categorieService.consultationCategorie();
+			catSession.setAttribute("categorieListe", liste);
 
 			return "accueilAgent";
-
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout categorie : fail !!!"));
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage("Ajout categorie : fail !!!"));
 			return "ajouterCategorie";
 		}
 
 	}
 
-	// modifier categorie :
-	public String modifierCategorie() {
-		// appel de la methode :
-		int verif = categorieService.modifierCategorieService(categorie);
+	// modifier categories :
+	public void edittable(RowEditEvent event) {
+		// appel de la méthode
+		categorieService.modifierCategorie((Categorie) event.getObject());
 
-		if (verif != 0) {
-			// récuperer la nouvelle liste de categories :
-			List<Categorie> liste = categorieService.consulatationCategorieService(); 
+		// récup et mettre à jour la liste
+		List<Categorie> liste1 = categorieService.consultationCategorie();
+		catSession.setAttribute("categorieListe", liste1);
 
-			// mettre à jour la session :
-			catSession.setAttribute("categorieListe", liste);
-
-			return "accueilAgent";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modif categorie : fail !!!"));
-			return "modifierCategorie";
-		}
 	}
 
 	// supprimer categories :
-	public String supprimerCategorie() {
+	public void supprimerCategorie() {
 
 		int verif = categorieService.supprimerCategorie(categorie);
 
 		if (verif != 0) {
-			// recuperer la nouvelle liste :
-			List<Categorie> liste = categorieService.consulatationCategorieService();   
-
-			// mettre à jour la session :
-			catSession.setAttribute("categorieListe", liste);
-
-			return "accueilAgent";
+			// recuperer et mettre à jour la nouvelle liste :
+			List<Categorie> liste2 = categorieService.consultationCategorie();
+			catSession.setAttribute("categorieListe", liste2);
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression categorie : fail !!!"));
-
-			return "supprimerCategorie";
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage("Suppression categorie : fail !!!"));
 		}
 	}
 
 	// rechercher une categorie par son id :
-	public String rechercherCategorieById() {
+	public void rechercherCategorieById() {
 		try {
 
-			Categorie catOut = categorieService.getCategorieByIdService(categorie);
-
-			this.categorie = catOut;
+			this.categorie = categorieService.getCategorieById(categorie);
 			this.indice = true;
-
-			return "rechercherCategorieParId";
 
 		} catch (Exception ex) {
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la categorie n'existe pas"));
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage("la categorie n'existe pas"));
 			this.indice = false;
-			return "rechercherCategorieParId";
-
 		}
 	}
-
-	public void edittable(RowEditEvent event) {
-		// appel de la méthode
-		categorieService.modifierCategorieService((Categorie) event.getObject());
-
-		// récup et mettre à jour la liste
-		List<Categorie> liste1 = categorieService.consulatationCategorieService(); 
-		catSession.setAttribute("categorieListe", liste1);
-
-	}
-	
-	
-	//consultation de l'ensemble de la liste :
-	/*public String consulterListeCategorie()
-	
-	{
-		
-	List<Categorie> catOut=categorieService.consulatationCategorieService(agent);
-	
-	this.listeCat=catOut;
-	
-	return "listeCat";
-		
-	
-		
-	}*/
-	
 
 }

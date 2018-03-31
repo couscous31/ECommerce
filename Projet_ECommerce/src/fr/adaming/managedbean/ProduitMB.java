@@ -30,8 +30,6 @@ public class ProduitMB implements Serializable {
 	// Attributs du MB
 	private Produit produit;
 	private Agent agent;
-	private Client client;
-
 	private boolean indice;
 
 	HttpSession maSession;
@@ -70,14 +68,6 @@ public class ProduitMB implements Serializable {
 		this.agent = agent;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
 	public boolean isIndice() {
 		return indice;
 	}
@@ -96,8 +86,8 @@ public class ProduitMB implements Serializable {
 
 		if (prAjout.getId() != 0) {
 			// récup et mettre à jour la liste
-			List<Produit> liste = produitService.getAllProduit();   //, client
-			maSession.setAttribute("produitsListe", liste);
+			List<Produit> liste1 = produitService.getAllProduit();
+			maSession.setAttribute("produitsListe", liste1);
 
 			return "accueilAgent";
 		} else {
@@ -106,79 +96,39 @@ public class ProduitMB implements Serializable {
 		}
 	}
 
-	// modifier les attributs d'un produit
-	public String modifierProduit() {
-		// appel de la methode
-		int prModif = produitService.updateProduit(produit);
-
-		if (prModif != 0) {
-			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit();  //, client
-			maSession.setAttribute("produitsListe", liste);
-
-			return "accueilAgent";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modif produit : fail !!!"));
-
-			return "modifierProduit";
-		}
-	}
-
-	// supprimer un produit de la liste :
-	public String supprimerProduit() {
-		int prSuppr = produitService.deleteProduit(produit);
-
-		if (prSuppr != 0) {
-			// recuperation de la liste
-			List<Produit> liste = produitService.getAllProduit();    //, client
-			maSession.setAttribute("produitsListe", liste);
-
-			return "accueilAgent";
-
-		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression produit : fail !!!"));
-
-			return "supprimerProduit";
-		}
-
-	}
-
-	// rechercher un produit par son id :
-	public String rechercherProduitById() {
-
-		try {
-			Produit prSear = produitService.getProduitById(produit);
-
-			this.produit = prSear;
-			this.indice = true;
-
-			return "rechercherProduitById";
-
-		}
-
-		catch (Exception ex) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("le produit n'existe pas"));
-			this.indice = false;
-			return "rechercherProduitById";
-
-		}
-
-	}
-
-	// methode pour la table edit
+	// modifier un produit :
 	public void editTable(RowEditEvent event) {
 		// appel de la methode modifier d'un produit :
 		produitService.updateProduit((Produit) event.getObject());
 
 		// récupérer la nouvelle liste :
-		List<Produit> liste = produitService.getAllProduit();   //, client
-
-		// mettre à jour la liste dans la session :
-		maSession.setAttribute("produitsListe", liste);
-
+		List<Produit> liste2 = produitService.getAllProduit();
+		maSession.setAttribute("produitsListe", liste2);
 	}
-	
 
+	// supprimer un produit de la liste :
+	public void supprimerProduit() {
+		int prSuppr = produitService.deleteProduit(produit);
 
+		if (prSuppr != 0) {
+			// recuperation de la liste
+			List<Produit> liste3 = produitService.getAllProduit(); // , client
+			maSession.setAttribute("produitsListe", liste3);
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression produit : fail !!!"));
+		}
+	}
+
+	// rechercher un produit par son id :
+	public void rechercherProduitById() {
+
+		try {
+			this.produit = produitService.getProduitById(produit);
+			this.indice = true;
+		} catch (Exception ex) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("le produit n'existe pas"));
+			this.indice = false;
+		}
+	}
 }

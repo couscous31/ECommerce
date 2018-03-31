@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import fr.adaming.model.Agent;
-import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
 @Stateless
@@ -47,14 +45,13 @@ public class ProduitDaoImpl implements IProduitDao{
 	public int deleteProduit(Produit pr) {
 		
 		//req jpql
-		String req1="DELETE FROM produits AS pr WHERE pr.id=:pIdPr AND pr.agent.id=:pIdA";
+		String req1="DELETE FROM produits AS pr WHERE pr.id=:pIdPr";
 		
 		//création de query
 		Query query1=em.createQuery(req1);
 		
 		//passage des params
 		query1.setParameter("pIdPr", pr.getId());
-		query1.setParameter("pIdA", pr.getAgent().getId());
 
 		//envoyer la req et récup résultat
 		return (int) query1.executeUpdate();
@@ -71,7 +68,7 @@ public class ProduitDaoImpl implements IProduitDao{
 									+ "pr.prix=:pPrix,"
 									+ "pr.quantite=:pQt,"
 									+ "pr.photoProd=:pPhoto"
-									+ " WHERE pr.id=:pIdPr AND pr.agent.id=:pIdAg";
+									+ " WHERE pr.id=:pIdPr";
 		
 		//création du query
 		Query query2=em.createQuery(req2);
@@ -83,7 +80,6 @@ public class ProduitDaoImpl implements IProduitDao{
 		query2.setParameter("pQt", pr.getQuantite());
 		query2.setParameter("pPhoto", pr.getPhotoProd());
 		query2.setParameter("pIdPr", pr.getId());
-		query2.setParameter("pIdAg", pr.getAgent().getId());
 		
 		//envoyer req et récup résultat
 		return (int) query2.executeUpdate();
@@ -95,14 +91,13 @@ public class ProduitDaoImpl implements IProduitDao{
 	public Produit getProduitById(Produit pr) {
 
 		//req jpql
-		String req3="SELECT pr FROM Produit AS pr WHERE pr.id=:pIdPr AND pr.agent.id=:pIdAg";
+		String req3="SELECT pr FROM Produit AS pr WHERE pr.id=:pIdPr";
 		
 		//création de query
 		Query query3=em.createQuery(req3);
 		
 		//passage des params
 		query3.setParameter("pIdPr", pr.getId());
-		query3.setParameter("pIdAg", pr.getAgent().getId());
 		
 		//envoyer req et récup résultat
 		return (Produit) query3.getSingleResult();
