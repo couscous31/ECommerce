@@ -24,7 +24,7 @@ public class LigneCommande implements Serializable {
 	@Column(name="id_lc")
 	private int id;
 	private int quantite;
-	private int  prix ;
+	private double  prix ;
 	
 	
 	//association uml java avec produit :
@@ -70,10 +70,11 @@ public class LigneCommande implements Serializable {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
-	public int getPrix() {
+	
+	public double getPrix() {
 		return prix;
 	}
-	public void setPrix(int prix) {
+	public void setPrix(double prix) {
 		this.prix = prix;
 	}
 	public Produit getProduit() {
